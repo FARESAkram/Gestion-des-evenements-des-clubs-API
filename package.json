@@ -1,0 +1,32 @@
+{
+  "name": "site-web-club-culturel-ensat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FARESAkram/site-web-club-culturel-EnsaT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FARESAkram/site-web-club-culturel-EnsaT/issues"
+  },
+  "homepage": "https://github.com/FARESAkram/site-web-club-culturel-EnsaT#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.6",
+    "express": "^4.17.2",
+    "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^7.0.0-alpha.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
