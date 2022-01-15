@@ -1,59 +1,40 @@
-const Evenement = require('../models/Evenement')
-const Club = require('../models/Club')
+const CelluleEvenement = require('../models/CelluleEvenement')
+const MembreDeCellule = require('../models/MembreDeCellule')
+const User = require('../models/User')
 const { validationResult } = require('express-validator')
-const {Op} = require("sequelize");
 
-exports.getAllEvenement = async (req,res) => {
+exports.getAllMembreDeCellule = async (req,res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() })
     }
     try{
-        let evenements = await Evenement.findAll({order:[['date']],where:{date: {[Op.gte]: new Date()}}})
-        evenements = await Promise.all(evenements.map(async event => {
-            const club = await Club.findByPk(event.idClub)
-            return {
-                ...event.dataValues,
-                club
-            }
+        let membresDeCellule = await MembreDeCellule.findAll({idCellule: req.params.idCellule})
+        const membres = []
+        await Promise.all(membresDeCellule.map(async e=>{
+            const user = await User.findByPk(e.idUser)
+            if(user)
+                membres.push(user)
         }))
-        return res.json({data:evenements})
+        return res.json({data:membres})
     }catch (err) {
         console.log(err.message)
         res.status(500).json({msg:"Server Error"})
     }
 }
 
-exports.getEvenement = async (req,res) => {
+exports.addMembreDeCellule = async (req,res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() })
     }
     try{
-        let evenement = await Evenement.findByPk(req.params.id)
-        const club = await Club.findByPk(evenement.idClub)
-        if(!club)
-            return res.status(404).json({msg:"Cet evenement n'a pas de club"})
-        evenement = {...evenement.dataValues,club}
-        return res.json({data:evenement})
-    }catch (err) {
-        console.log(err.message)
-        res.status(500).json({msg:"Server Error"})
-    }
-}
-
-exports.addEvenement = async (req,res) => {
-    const errors = validationResult(req)
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() })
-    }
-    try{
-        const evenement = await Evenement.create({...req.body,idClub:req.params.idClub})
-        res.json({data:evenement})
+        const membreDeCellule = await MembreDeCellule.create({idCellule:req.params.id,idUser:req.user.id_user})
+        res.json({data:membreDeCellule})
     }catch(err) {
-        const club = Club.findByPk(req.params.idClub)
-        if(!club)
-            return res.status(404).json({msg:'Club introuvable'})
+        const cellule = CelluleEvenement.findByPk(req.params.id)
+        if(!cellule)
+            return res.status(404).json({msg:'Cellule introuvable'})
         console.log(err.message)
         res.status(500).json({msg:"Server Error"})
     }

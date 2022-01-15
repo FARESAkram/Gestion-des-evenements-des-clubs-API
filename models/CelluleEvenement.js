@@ -1,14 +1,22 @@
 const Sequelize = require('sequelize')
 const connectDB = require('../config/db')
 const sequelize = connectDB.getConnexion()
-const User = require('./User')
+const Evenement = require('./Evenement')
 
-const Club = sequelize.define('club',
+const CelluleEvenement = sequelize.define('celluleEvenement',
 {
     id: {
         type : Sequelize.INTEGER,
         autoIncrement : true,
         primaryKey : true,
+    },
+    idEvenement:{
+        type: Sequelize.INTEGER,
+        allowNull:false,
+        references : {
+            model : Evenement,
+            key : "id"
+        }
     },
     nom : {
         type : Sequelize.STRING(50),
@@ -17,14 +25,7 @@ const Club = sequelize.define('club',
     description : {
         type : Sequelize.STRING,
         allowNull : false,
-    },
-    abbreviation : {
-        type : Sequelize.STRING(10),
-        allowNull : false,
-    },
-    logo:{
-        type : Sequelize.TEXT,
     }
 })
 
-module.exports = Club
+module.exports = CelluleEvenement

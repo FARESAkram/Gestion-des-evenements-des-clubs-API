@@ -1,5 +1,5 @@
 const express = require('express')
-const router = express.Router()
+const router = express.Router({mergeParams:true})
 const evenementValidator = require('../validators/evenementValidator')
 const evenementContoller = require('../controllers/evenementController')
 
@@ -9,7 +9,8 @@ router.route('/')
 
 router.route('/:id')
     .get(evenementValidator.getEvenement,evenementContoller.getEvenement)
+    .put(evenementValidator.updateEvenement,evenementContoller.udpateEvenement)
     .delete(evenementValidator.deleteEvenement,evenementContoller.deleteEvenement)
-    .put(evenementValidator.updateEvenement,evenementContoller.updateEvenement)
+
 
 module.exports = router;

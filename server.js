@@ -3,12 +3,18 @@ const app = express()
 const syncData = require('./utils/syncData')
 
 const userRouter = require('./routes/userRouter')
+const clubRouter = require('./routes/clubRouter')
+const evenementRouter = require('./routes/evenementRouter')
+const celluleEvenementRouter = require('./routes/celluleEvenementRouter')
 
 syncData()
 
 app.use(express.json())
 
 app.use('/api/v1/users', userRouter)
+app.use('/api/v1/clubs',clubRouter)
+app.use('/api/v1/clubs/:idClub/evenements', evenementRouter)
+app.use('/api/v1/clubs/:idClub/evenements/:idEvenement/cellule',celluleEvenementRouter)
 
 PORT = process.env.PORT || 5000
 
