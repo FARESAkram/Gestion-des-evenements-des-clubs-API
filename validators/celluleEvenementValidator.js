@@ -1,12 +1,14 @@
 const { body } = require('express-validator')
 const { auth } = require('../middlewares/isAllowedUser')
+const {isMembreCellule} = require('../middlewares/isAllowedCellule')
 
 exports.getAllCelluleEvenement = [
     auth
 ]
 
 exports.getCelluleEvenement = [
-    auth
+    auth,
+    isMembreCellule
 ]
 
 exports.addCelluleEvenement = [
