@@ -13,7 +13,7 @@ const syncData = async (params) => {
     await Visitor.sync()
     await Role.sync()
     await MembreDEvenement.sync()
-    await Message.sync({force:true})
+    await Message.sync()
 }
 
 module.exports = syncData

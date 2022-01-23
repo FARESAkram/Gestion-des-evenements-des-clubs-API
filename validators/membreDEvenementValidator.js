@@ -6,6 +6,10 @@ exports.getAllMembreDEvenement = [
     isPresident
 ]
 
+exports.getUserEvenement = [
+    auth
+]
+
 exports.addMembreDEvenement = [
     auth,
     isPresident

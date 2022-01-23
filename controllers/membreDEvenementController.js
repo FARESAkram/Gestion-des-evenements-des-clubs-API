@@ -1,7 +1,6 @@
 const Evenement = require('../models/Evenement');
 const User = require('../models/User');
 const { validationResult } = require('express-validator');
-const Club = require('../models/Club');
 const MembreDEvenement = require('../models/MembreDEvenement');
 
 exports.getAllMembreDEvenement = async (req,res) =>{
@@ -43,6 +42,19 @@ exports.getAllMembreDEvenement = async (req,res) =>{
         res.status(200).json({data :data})
         
     }catch(err){
+        console.log(err.message)
+        res.status(500).json({msg:"Server Error"})
+    }
+}
+
+exports.getUserEvenement = async (req,res) => {
+    try{
+        const membreDeEvenement = await MembreDEvenement.findAll({where:{id_user:req.user.id_user}})
+        const events = await Promise.all(membreDeEvenement.map( async e=>(
+            await Evenement.findByPk(e.id_evenement)
+        )))
+        res.json({data: events})
+    }catch (err) {
         console.log(err.message)
         res.status(500).json({msg:"Server Error"})
     }

@@ -3,7 +3,7 @@ const User = require('../models/User')
 
 exports.getAllMessages = async (req,res) => {
     try{
-        const msgs = await Message.findAll({where:{id_evenement:req.params.id_evenement}})
+        const msgs = await Message.findAll({where:{id_evenement:req.params.id_evenement},order:[['date','ASC']]})
         const messages = await Promise.all(msgs.map(async e=>{
             const user = await User.findByPk(e.id_user,{attributes:{exclude:['motdepasse']}})
             return {
