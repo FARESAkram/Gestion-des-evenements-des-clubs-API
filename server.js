@@ -14,6 +14,7 @@ const roleRouter = require('./routes/RoleRouter')
 const adminRouter = require('./routes/adminRouter')
 const membreDEvenementRouter = require('./routes/membreDEvenementRouter')
 const messageRouter = require('./routes/messagesRouter')
+const statisticsRouter = require('./routes/statisticsRouter')
 
 app.use(cors({origin:"http://localhost:3000"}))
 app.use(express.json({limit: '5mb'}))
@@ -41,6 +42,8 @@ app.use('/api/v1/roles', roleRouter)
 app.use('/api/v1/clubs/:id_club/evenements', evenementRouter)
 app.use('/api/v1/membredevenements/:id_club',membreDEvenementRouter)
 app.use('/api/v1/clubs/:id_club/evenements/:id_evenement/message',messageRouter)
+app.use('/api/v1/Statistics',statisticsRouter)
+
 
 PORT = process.env.PORT || 5000
 server.listen(PORT,()=>{

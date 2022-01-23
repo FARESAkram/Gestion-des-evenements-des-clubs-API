@@ -33,10 +33,17 @@ exports.updateRole = [
     body("id_club", "veuillez saisir le club").notEmpty(),
     body("role", "veuillez sasir le role").notEmpty(),
 ]
+
+
 exports.deleteRole = [
     auth,
     isPresident
 ]
+
+exports.getUserClubs = [
+    auth
+]
+
 exports.deleteRoleAdmin = [
     auth,
     isAdmin

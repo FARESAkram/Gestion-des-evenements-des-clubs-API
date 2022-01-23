@@ -203,6 +203,15 @@ exports.deleteRoleAdmin = async(req, res) =>{
     }
 }
 
+exports.getUserClubs = async (req,res) => {
+    try{
+        const roles = await Role.findAll({where:{id_user:req.user.id_user}})
+        res.json({data:roles})
+    }
+    catch(err){
+        res.status(500).json({msg : "Server Error"});
+    }
+}
 
 //added by badr
 exports.deletePresident = async(req, res) =>{

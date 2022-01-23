@@ -33,7 +33,7 @@ const Evenement = sequelize.define('evenement', {
         allowNull: false
     },
     logo:{
-        type : Sequelize.TEXT,
+        type : Sequelize.TEXT('long'),
     }
 })
 

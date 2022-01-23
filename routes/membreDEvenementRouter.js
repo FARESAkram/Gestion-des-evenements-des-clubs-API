@@ -13,7 +13,7 @@ router.route('/:id_user/evenements/:id_evenement')
 router.route('/:id')
       .delete(MembreDEvenementValidator.deleteMembreDEvenemnt,MembreDEvenementController.deleteMembreDEvenement)
 
-router.route('/evenements/:id_evenement/getEvents')
+router.route('/getEvents')
     .get(MembreDEvenementValidator.getUserEvenement,MembreDEvenementController.getUserEvenement)
 
 module.exports = router; 

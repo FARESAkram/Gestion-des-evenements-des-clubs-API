@@ -23,7 +23,7 @@ const Club = sequelize.define('club',
         allowNull : false,
     },
     logo:{
-        type : Sequelize.TEXT,
+        type : Sequelize.TEXT('long'),
     }
 })
 

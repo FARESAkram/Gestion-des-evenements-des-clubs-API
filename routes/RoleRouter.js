@@ -18,6 +18,9 @@ RoleRouter.route("/club/:id_club/pres")
 RoleRouter.route("/delete/:id_role/pres")
     .delete(RoleValidator.deleteRoleAdmin, RoleController.deleteRoleAdmin)
 
+RoleRouter.route("/club/:id_club/userClubs")
+    .get(RoleValidator.getUserClubs, RoleController.getUserClubs)
+
 // added by badr     
 RoleRouter.route("/club/:id_club/deletePresident/:id_user")
     .delete(RoleValidator.deleteRoleAdmin, RoleController.deletePresident)

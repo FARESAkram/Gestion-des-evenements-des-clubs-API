@@ -3,5 +3,5 @@ const {auth} = require("../middlewares/isAllowedUser")
 
 
 exports.getAllMessages = [
-    //auth
+    auth
 ]
