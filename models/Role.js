@@ -14,14 +14,16 @@ const Role = sequelize.define('Role',
         id_user : {
             type : Sequelize.INTEGER,
             allowNull : false,
+            onDelete: "CASCADE",
             references : {
                 model : User,
-                key : "id_user"
+                key : "id_user",
             }
         },
         id_club : {
             type : Sequelize.INTEGER,
             allowNull : false,
+            onDelete: "CASCADE",
             references :{
                 model : Club,
                 key : "id",

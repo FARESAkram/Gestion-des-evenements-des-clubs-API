@@ -14,17 +14,19 @@ const Message = sequelize.define('message',
         id_user:{
             type: Sequelize.INTEGER,
             allowNull:false,
+            onDelete: "CASCADE",
             references : {
                 model : User,
-                key : "id_user"
+                key : "id_user",
             }
         },
         id_evenement:{
             type: Sequelize.INTEGER,
             allowNull:false,
+            onDelete: "CASCADE",
             references : {
                 model : Evenement,
-                key : "id"
+                key : "id",
             }
         },
         contenue : {

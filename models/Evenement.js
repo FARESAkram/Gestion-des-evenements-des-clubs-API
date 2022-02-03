@@ -14,10 +14,10 @@ const Evenement = sequelize.define('evenement', {
     id_club: {
         type: Sequelize.INTEGER,
         allowNull:false,
+        onDelete: "CASCADE",
         references: {
             model: Club,
-            key: "id",
-            onDelete:'cascade'
+            key: "id"
         }
     },
     nom: {

@@ -1,8 +1,8 @@
 {
     "mysqlConfig":{
-       "dataBase":"projet_gde",
+       "dataBase":"GestionDesEvenements",
        "user":"root",
-       "password":"root",
+       "password":"bilaldraoui12450",
        "host":"localhost",
        "dialect":"mysql",
        "port":"3306"

@@ -81,7 +81,7 @@ exports.addMembreDEvenement = async (req,res) => {
                 id_club:req.params.id_club
             }
         })
-        if(membres){
+        if(membres.length){
             return res.status(400).json({msg:"Membre participe déjà"})
         }
 

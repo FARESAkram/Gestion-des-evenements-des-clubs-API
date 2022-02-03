@@ -13,6 +13,7 @@ const MembreDEvenement = sequelize.define('membredevenement', {
     },
     id_user: {
         type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
         references: {
             model: User,
             key: "id_user"
@@ -20,6 +21,7 @@ const MembreDEvenement = sequelize.define('membredevenement', {
     },
     id_evenement:{
         type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
         references: {
             model: Evenement,
             key: "id"
@@ -27,6 +29,7 @@ const MembreDEvenement = sequelize.define('membredevenement', {
     },
     id_club:{
         type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
         references: {
             model: Club,
             key: "id"
