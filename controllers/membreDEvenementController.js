@@ -74,6 +74,17 @@ exports.addMembreDEvenement = async (req,res) => {
             return res.status(400).json({msg:"Evenement introuvable"})
         }
 
+        const membres = await MembreDEvenement.findAll({
+            where : {
+                id_user:req.params.id_user,
+                id_evenement:req.params.id_evenement,
+                id_club:req.params.id_club
+            }
+        })
+        if(membres){
+            return res.status(400).json({msg:"Membre participe déjà"})
+        }
+
         const data = await MembreDEvenement.create({
             id_user:req.params.id_user,
             id_evenement:req.params.id_evenement,
