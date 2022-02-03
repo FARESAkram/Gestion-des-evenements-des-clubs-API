@@ -54,7 +54,6 @@ exports.addEvenement = async (req,res) => {
         const club = Club.findByPk(req.params.id_club)
         if(!club)
             return res.status(404).json({msg:'Club introuvable'})
-        console.log("add evenement error message : " + err.message)
         res.status(500).json({msg:"Server Error"})
     }
 }

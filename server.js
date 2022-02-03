@@ -16,7 +16,7 @@ const membreDEvenementRouter = require('./routes/membreDEvenementRouter')
 const messageRouter = require('./routes/messagesRouter')
 const statisticsRouter = require('./routes/statisticsRouter')
 
-app.use(cors({origin:"http://localhost:3000"}))
+app.use(cors({origin:"*"}))
 app.use(express.json({limit: '5mb'}))
 app.use(express.urlencoded({limit: '5mb', extended: false}));
 
@@ -25,7 +25,7 @@ app.use(express.urlencoded({limit: '5mb', extended: false}));
 const server = require('http').Server(app);
 const io = require('socket.io')(server,{
     cors: {
-        origin: "http://localhost:3000",
+        origin: "*",
         methods: ["GET", "POST"],
         allowedHeaders: ["my-custom-header"],
         credentials: true

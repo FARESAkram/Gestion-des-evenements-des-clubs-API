@@ -65,7 +65,6 @@ exports.addRole = async(req, res) =>{
             if(existant_role)
                 return res.status(400).json({ msg : "le role est deja attribuer"});
             let role = await Role.create({...infos});
-            console.log("got here")
             await role.save();
             res.json({data : role});
         }

@@ -36,7 +36,6 @@ exports.getAllClub = async (req,res) =>{
 }
 
 exports.addClub = async (req,res) =>{
-    console.log(req.body)
     try{
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
@@ -68,7 +67,6 @@ exports.addClub = async (req,res) =>{
 
 
 exports.updateClub = async (req,res) =>{
-    console.log("BODY OF UPDATE", req.body)
     try{
         const errors = validationResult(req)
         if (!errors.isEmpty()) {

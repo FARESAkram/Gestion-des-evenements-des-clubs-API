@@ -11,11 +11,8 @@ exports.getAllMembreDEvenement = async (req,res) =>{
         }
 
         let membreDEvenements = await MembreDEvenement.findAll({where : { id_club : req.params.id_club}})
-        
         const evenements = await Evenement.findAll();
-        console.log(evenements)
         const users = await User.findAll();
-        console.log("=================================================================")
 
         const data = membreDEvenements.map( (row) =>{
             const id_user = row['id_user']

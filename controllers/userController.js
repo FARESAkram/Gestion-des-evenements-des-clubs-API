@@ -30,7 +30,6 @@ exports.getConnectedUser = async (req,res) => {
     user = {...user.dataValues,club:null,isPresident:false}
 
     const isPresident = await Role.findOne({where:{role:'president',id_user:req.user.id_user}})
-    console.log(isPresident)
     if(isPresident)
         user = {...user,club:await Club.findByPk(isPresident.id_club),isPresident:true}
 
@@ -52,11 +51,8 @@ exports.getAllUsers = async (req,res) => {
 }
 
 exports.registerUser = async (req,res)=>{
-    console.log("registering user body", req.body)
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      console.log(errors.array())
-
       return res.status(400).json({ errors: errors.array() })
     }
 
