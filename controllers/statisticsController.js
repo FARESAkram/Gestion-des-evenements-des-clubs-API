@@ -20,7 +20,7 @@ exports.basicStats = async (req, res) => {
                                         WHERE c.id=e.id_club 
                                         GROUP BY id_club`)
         membresPerClub = await sequelize.query(`SELECT c.abbreviation , count(*) AS totalMembres
-                                                FROM clubs c, Roles r
+                                                FROM clubs c, roles r
                                                 WHERE c.id=r.id_club
                                                 GROUP BY id_club`)
         visitors = await sequelize.query(`SELECT number,jour

@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 const connectDB = require('../config/db')
 const sequelize = connectDB.getConnexion()
 
-const Role = sequelize.define('Role',
+const Role = sequelize.define('role',
     {
         id_role : {
             type : Sequelize.INTEGER,
