@@ -1,0 +1,11 @@
+{
+    "mysqlConfig":{
+       "dataBase":"GestionDesEvenements",
+       "user":"root",
+       "password":"bilaldraoui12450",
+       "host":"localhost",
+       "dialect":"mysql",
+       "port":"3306"
+    },
+    "jwtSecret":"kmqVKJSkEW@%5=Mp"
+ }
